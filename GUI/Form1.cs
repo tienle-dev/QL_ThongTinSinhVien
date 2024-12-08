@@ -12,6 +12,7 @@ namespace GUI
 {
     public partial class Form1 : Form
     {
+        //hello nam 
         public Form1()
         {
             InitializeComponent();
