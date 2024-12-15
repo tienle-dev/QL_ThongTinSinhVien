@@ -50,17 +50,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(53, 96);
+            this.label2.Location = new System.Drawing.Point(15, 96);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 20);
+            this.label2.Size = new System.Drawing.Size(124, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Mã ID:";
+            this.label2.Text = "Tên đăng nhập:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(30, 171);
+            this.label3.Location = new System.Drawing.Point(57, 171);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 20);
             this.label3.TabIndex = 1;
@@ -68,15 +68,16 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(118, 94);
+            this.txtID.Location = new System.Drawing.Point(156, 94);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(197, 22);
             this.txtID.TabIndex = 2;
             // 
             // txtMatkhau
             // 
-            this.txtMatkhau.Location = new System.Drawing.Point(118, 171);
+            this.txtMatkhau.Location = new System.Drawing.Point(156, 171);
             this.txtMatkhau.Name = "txtMatkhau";
+            this.txtMatkhau.PasswordChar = '*';
             this.txtMatkhau.Size = new System.Drawing.Size(197, 22);
             this.txtMatkhau.TabIndex = 2;
             // 
@@ -88,6 +89,7 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // Form1
             // 

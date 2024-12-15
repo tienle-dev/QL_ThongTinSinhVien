@@ -49,8 +49,10 @@ namespace GUI
 
         private void LopToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLop lop = new frmLop();
+            this.Hide();
+            frmLop lop= new frmLop();
             lop.ShowDialog();
+            this.Show();
         }
     }
 }
