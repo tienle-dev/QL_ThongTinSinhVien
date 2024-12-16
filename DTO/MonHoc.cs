@@ -12,6 +12,7 @@ namespace DTO
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         public string MaMon { get; set; }
         public string tenMon { get; set; }
         public int soTinChi { get; set; }

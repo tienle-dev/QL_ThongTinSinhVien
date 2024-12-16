@@ -84,8 +84,15 @@ namespace DAL
         // Cập nhật môn học
         public void UpdateMonHoc(MonHoc monHoc)
         {
+            var update = Builders<MonHoc>.Update
+                .Set(m => m.tenMon, monHoc.tenMon)
+                .Set(m => m.soTinChi, monHoc.soTinChi)
+                .Set(m => m.tietLT, monHoc.tietLT)
+                .Set(m => m.tietTH, monHoc.tietTH)
+                .Set(m => m.khoaId, monHoc.khoaId);
+
             var filter = Builders<MonHoc>.Filter.Eq(m => m.MaMon, monHoc.MaMon);
-            MonHocCollection.ReplaceOne(filter, monHoc);
+            MonHocCollection.UpdateOne(filter, update);
         }
 
         // Xóa môn học

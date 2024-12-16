@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class BusinessLogic
+    public class LopBLL
     {
         private readonly Database _db;
 
-        public BusinessLogic()
+        public LopBLL()
         {
             _db = new Database();
         }
@@ -28,38 +28,5 @@ namespace BLL
         public void UpdateLop(string maLop, Lop updatedLop) => _db.UpdateLop(maLop, updatedLop);
         public void DeleteLop(string maLop) => _db.DeleteLop(maLop);
         public List<Lop> SearchLops(string tenLop, string idNganh) => _db.SearchLops(tenLop, idNganh);
-
-        // Môn học
-        /*
-        public List<MonHoc> GetMonHocs()
-        {
-            return _db.GetMonHocs();
-        }
-
-        public List<Khoa> GetKhoas()
-        {
-            return _db.GetKhoas();
-        }
-
-        public void AddMonHoc(MonHoc monHoc)
-        {
-            _db.AddMonHoc(monHoc);
-        }
-
-        public void UpdateMonHoc(MonHoc monHoc)
-        {
-            _db.UpdateMonHoc(monHoc);
-        }
-
-        public void DeleteMonHoc(string maMon)
-        {
-            _db.DeleteMonHoc(maMon);
-        }
-
-        public List<MonHoc> SearchMonHocs(string tenMon, int? soTinChi, int? tietLyThuyet, int? tietThucHanh, string maKhoa)
-        {
-            return _db.SearchMonHocs(tenMon, soTinChi, tietLyThuyet, tietThucHanh, maKhoa);
-        }
-        */
     }
 }

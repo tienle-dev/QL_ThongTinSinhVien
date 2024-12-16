@@ -44,14 +44,14 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dataGridViewDanhsachmon = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxKhoaquanly = new System.Windows.Forms.ComboBox();
             this.mamon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenmon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sotinchi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tietlythuyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tietthuchanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.khoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxKhoaquanly = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanhsachmon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -219,29 +219,6 @@
             this.dataGridViewDanhsachmon.TabIndex = 19;
             this.dataGridViewDanhsachmon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanhsachmon_CellClick);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(96, 156);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(151, 20);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Chọn khoa quản lý:";
-            // 
-            // comboBoxKhoaquanly
-            // 
-            this.comboBoxKhoaquanly.FormattingEnabled = true;
-            this.comboBoxKhoaquanly.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.comboBoxKhoaquanly.Location = new System.Drawing.Point(255, 156);
-            this.comboBoxKhoaquanly.Name = "comboBoxKhoaquanly";
-            this.comboBoxKhoaquanly.Size = new System.Drawing.Size(289, 24);
-            this.comboBoxKhoaquanly.TabIndex = 13;
-            // 
             // mamon
             // 
             this.mamon.HeaderText = "Mã môn";
@@ -283,6 +260,29 @@
             this.khoa.MinimumWidth = 6;
             this.khoa.Name = "khoa";
             this.khoa.Width = 125;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(96, 156);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(151, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Chọn khoa quản lý:";
+            // 
+            // comboBoxKhoaquanly
+            // 
+            this.comboBoxKhoaquanly.FormattingEnabled = true;
+            this.comboBoxKhoaquanly.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.comboBoxKhoaquanly.Location = new System.Drawing.Point(281, 156);
+            this.comboBoxKhoaquanly.Name = "comboBoxKhoaquanly";
+            this.comboBoxKhoaquanly.Size = new System.Drawing.Size(289, 24);
+            this.comboBoxKhoaquanly.TabIndex = 13;
             // 
             // frmMonHoc
             // 

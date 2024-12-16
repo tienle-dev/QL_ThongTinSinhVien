@@ -14,12 +14,12 @@ namespace GUI
 {
     public partial class frmLop : Form
     {
-        private readonly BusinessLogic _logic;
+        private readonly LopBLL _logic;
 
         public frmLop()
         {
             InitializeComponent();
-            _logic = new BusinessLogic();
+            _logic = new LopBLL();
             LoadData();
         }
 
@@ -87,7 +87,7 @@ namespace GUI
             if (dataGridViewDanhsachlop.SelectedRows.Count > 0)
             {
                 var maLop = dataGridViewDanhsachlop.SelectedRows[0].Cells["malop"].Value.ToString();
-                if (MessageBox.Show("Are you sure to delete this record?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MessageBox.Show("Bạn có chắc muốn xóa lớp học này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     _logic.DeleteLop(maLop);
                     LoadData();
@@ -110,7 +110,7 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("No records found matching the search criteria.", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Không tìm thấy lớp nào khớp với tiêu chí tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

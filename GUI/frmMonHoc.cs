@@ -14,11 +14,11 @@ namespace GUI
 {
     public partial class frmMonHoc : Form
     {
-        private BusinessLogic _logic;
+        private MonHocBLL _logic;
         public frmMonHoc()
         {
             InitializeComponent();
-            _logic = new BusinessLogic();
+            _logic = new MonHocBLL();
             LoadData();
         }
 
