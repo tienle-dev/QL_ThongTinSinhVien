@@ -15,13 +15,15 @@ namespace DAL
 
         public Database()
         {
-            var client = new MongoClient("mongodb+srv://tienle:pass123@cluster0.y6jck.mongodb.net/"); // Replace with your MongoDB connection string
+            var client = new MongoClient("mongodb+srv://tienle:pass123@cluster0.y6jck.mongodb.net/");
             _database = client.GetDatabase("QL_Thongtinsinhvien");
         }
 
         public IMongoCollection<Admin> Admins => _database.GetCollection<Admin>("Admin");
         public IMongoCollection<Lop> Lops => _database.GetCollection<Lop>("Lop");
         public IMongoCollection<Nganh> Nganhs => _database.GetCollection<Nganh>("Nganh");
+        public IMongoCollection<MonHoc> MonHocCollection => _database.GetCollection<MonHoc>("MonHoc");
+        public IMongoCollection<Khoa> KhoaCollection => _database.GetCollection<Khoa>("Khoa");
 
         // Admin authentication
         public bool AuthenticateAdmin(string username, string password)
@@ -30,6 +32,7 @@ namespace DAL
             return admin != null;
         }
 
+        // Lớp
         // CRUD operations for Lop
         public List<Lop> GetAllLops() => Lops.Find(_ => true).ToList();
 
@@ -58,5 +61,57 @@ namespace DAL
 
         // Fetch departments for ComboBox
         public List<Nganh> GetAllNganhs() => Nganhs.Find(_ => true).ToList();
+
+        // Môn học
+        // Lấy tất cả môn học
+        public List<MonHoc> GetMonHocs()
+        {
+            return MonHocCollection.Find(new BsonDocument()).ToList();
+        }
+
+        // Lấy tất cả khoa
+        public List<Khoa> GetKhoas()
+        {
+            return KhoaCollection.Find(new BsonDocument()).ToList();
+        }
+
+        // Thêm môn học
+        public void AddMonHoc(MonHoc monHoc)
+        {
+            MonHocCollection.InsertOne(monHoc);
+        }
+
+        // Cập nhật môn học
+        public void UpdateMonHoc(MonHoc monHoc)
+        {
+            var filter = Builders<MonHoc>.Filter.Eq(m => m.MaMon, monHoc.MaMon);
+            MonHocCollection.ReplaceOne(filter, monHoc);
+        }
+
+        // Xóa môn học
+        public void DeleteMonHoc(string maMon)
+        {
+            var filter = Builders<MonHoc>.Filter.Eq(m => m.MaMon, maMon);
+            MonHocCollection.DeleteOne(filter);
+        }
+
+        // Tìm kiếm môn học
+        public List<MonHoc> SearchMonHocs(string tenMon, int? soTinChi, int? tietLyThuyet, int? tietThucHanh, string maKhoa)
+        {
+            var filter = Builders<MonHoc>.Filter.Empty;
+
+            if (!string.IsNullOrEmpty(tenMon))
+                filter &= Builders<MonHoc>.Filter.Regex(m => m.tenMon, new BsonRegularExpression(tenMon, "i"));
+            if (soTinChi.HasValue)
+                filter &= Builders<MonHoc>.Filter.Eq(m => m.soTinChi, soTinChi.Value);
+            if (tietLyThuyet.HasValue)
+                filter &= Builders<MonHoc>.Filter.Eq(m => m.tietLT, tietLyThuyet.Value);
+            if (tietThucHanh.HasValue)
+                filter &= Builders<MonHoc>.Filter.Eq(m => m.tietTH, tietThucHanh.Value);
+            if (!string.IsNullOrEmpty(maKhoa))
+                filter &= Builders<MonHoc>.Filter.Eq(m => m.khoaId, maKhoa);
+
+            return MonHocCollection.Find(filter).ToList();
+        }
     }
 }

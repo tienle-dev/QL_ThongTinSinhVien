@@ -25,8 +25,10 @@ namespace GUI
 
         private void MonHocToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
             frmMonHoc monHoc = new frmMonHoc();
             monHoc.ShowDialog();
+            this.Show();
         }
 
         private void DiemToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,6 +55,11 @@ namespace GUI
             frmLop lop= new frmLop();
             lop.ShowDialog();
             this.Show();
+        }
+
+        private void frmTrangChu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
