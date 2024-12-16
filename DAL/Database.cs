@@ -49,9 +49,9 @@ namespace DAL
         {
             var filter = Builders<Lop>.Filter.Empty;
             if (!string.IsNullOrEmpty(tenLop))
-                filter &= Builders<Lop>.Filter.Eq(l => l.TenLop, tenLop);
+                filter &= Builders<Lop>.Filter.Eq(l => l.tenLop, tenLop);
             if (!string.IsNullOrEmpty(idNganh))
-                filter &= Builders<Lop>.Filter.Eq(l => l.IdNganh, idNganh);
+                filter &= Builders<Lop>.Filter.Eq(l => l.nganhId, idNganh);
 
             return Lops.Find(filter).ToList();
         }

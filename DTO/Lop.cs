@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +10,11 @@ namespace DTO
 {
     public class Lop
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string MaLop { get; set; } // ID
-        public string TenLop { get; set; } // ten lop
-        public string IdNganh { get; set; } // tham chieu toi ID cua Nganh
+        public string tenLop { get; set; } // ten lop
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string nganhId { get; set; } // tham chieu toi ID cua Nganh
     }
 }

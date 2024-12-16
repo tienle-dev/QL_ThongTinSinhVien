@@ -30,9 +30,6 @@
         {
             this.comboBoxDanhsachnganh = new System.Windows.Forms.ComboBox();
             this.dataGridViewDanhsachlop = new System.Windows.Forms.DataGridView();
-            this.malop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenlop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tennganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -43,6 +40,9 @@
             this.txtMalop = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tennganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenlop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.malop = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanhsachlop)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,27 +67,7 @@
             this.dataGridViewDanhsachlop.RowTemplate.Height = 24;
             this.dataGridViewDanhsachlop.Size = new System.Drawing.Size(678, 159);
             this.dataGridViewDanhsachlop.TabIndex = 46;
-            // 
-            // malop
-            // 
-            this.malop.HeaderText = "Mã lớp";
-            this.malop.MinimumWidth = 6;
-            this.malop.Name = "malop";
-            this.malop.Width = 125;
-            // 
-            // tenlop
-            // 
-            this.tenlop.HeaderText = "Tên lớp";
-            this.tenlop.MinimumWidth = 6;
-            this.tenlop.Name = "tenlop";
-            this.tenlop.Width = 250;
-            // 
-            // tennganh
-            // 
-            this.tennganh.HeaderText = "Tên ngành";
-            this.tennganh.MinimumWidth = 6;
-            this.tennganh.Name = "tennganh";
-            this.tennganh.Width = 250;
+            this.dataGridViewDanhsachlop.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanhsachlop_CellClick);
             // 
             // btnLamMoi
             // 
@@ -98,6 +78,7 @@
             this.btnLamMoi.TabIndex = 41;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // btnTimKiem
             // 
@@ -108,6 +89,7 @@
             this.btnTimKiem.TabIndex = 42;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // btnXoa
             // 
@@ -118,6 +100,7 @@
             this.btnXoa.TabIndex = 43;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -128,6 +111,7 @@
             this.btnSua.TabIndex = 44;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -138,6 +122,7 @@
             this.btnThem.TabIndex = 45;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtTenlop
             // 
@@ -184,6 +169,27 @@
             this.label1.TabIndex = 38;
             this.label1.Text = "Mã lớp: ";
             // 
+            // tennganh
+            // 
+            this.tennganh.HeaderText = "Tên ngành";
+            this.tennganh.MinimumWidth = 6;
+            this.tennganh.Name = "tennganh";
+            this.tennganh.Width = 250;
+            // 
+            // tenlop
+            // 
+            this.tenlop.HeaderText = "Tên lớp";
+            this.tenlop.MinimumWidth = 6;
+            this.tenlop.Name = "tenlop";
+            this.tenlop.Width = 250;
+            // 
+            // malop
+            // 
+            this.malop.HeaderText = "Mã lớp";
+            this.malop.MinimumWidth = 6;
+            this.malop.Name = "malop";
+            this.malop.Width = 125;
+            // 
             // frmLop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -203,6 +209,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmLop";
             this.Text = "Quản lý lớp";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLop_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanhsachlop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
