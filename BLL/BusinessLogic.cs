@@ -22,12 +22,14 @@ namespace BLL
             return _db.AuthenticateAdmin(username, password);
         }
 
+        /*
         public List<Lop> GetLops() => _db.GetAllLops();
         public List<Nganh> GetNganhs() => _db.GetAllNganhs();
         public void AddLop(Lop lop) => _db.AddLop(lop);
         public void UpdateLop(string maLop, Lop updatedLop) => _db.UpdateLop(maLop, updatedLop);
         public void DeleteLop(string maLop) => _db.DeleteLop(maLop);
         public List<Lop> SearchLops(string tenLop, string idNganh) => _db.SearchLops(tenLop, idNganh);
+        */
 
         // Môn học
         /*

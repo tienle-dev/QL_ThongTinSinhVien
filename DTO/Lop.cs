@@ -12,9 +12,9 @@ namespace DTO
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; } // ID
         public string MaLop { get; set; } // ID
         public string tenLop { get; set; } // ten lop
-        [BsonRepresentation(BsonType.ObjectId)]
         public string nganhId { get; set; } // tham chieu toi ID cua Nganh
     }
 }

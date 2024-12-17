@@ -34,7 +34,7 @@ namespace GUI
                 {
                     l.MaLop,
                     l.tenLop,
-                    TenNganh = _logic.GetNganhs().FirstOrDefault(n => n.Id == l.nganhId)?.tenNganh
+                    TenNganh = _logic.GetNganhs().FirstOrDefault(n => n.maNganh == l.nganhId)?.tenNganh
                 })
                 .ToList();
 
@@ -49,7 +49,8 @@ namespace GUI
             // Gán dữ liệu cho ComboBox
             comboBoxDanhsachnganh.DataSource = _logic.GetNganhs();
             comboBoxDanhsachnganh.DisplayMember = "TenNganh";
-            comboBoxDanhsachnganh.ValueMember = "Id";
+            comboBoxDanhsachnganh.ValueMember = "maNganh";
+            comboBoxDanhsachnganh.SelectedIndex = -1;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -63,6 +64,7 @@ namespace GUI
 
             _logic.AddLop(newLop);
             LoadData();
+            MessageBox.Show("Thêm lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -77,8 +79,9 @@ namespace GUI
                     nganhId = comboBoxDanhsachnganh.SelectedValue.ToString()
                 };
 
-                _logic.UpdateLop(maLop, updatedLop);
+                _logic.UpdateLop(updatedLop);
                 LoadData();
+                MessageBox.Show("Cập nhật lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -91,6 +94,7 @@ namespace GUI
                 {
                     _logic.DeleteLop(maLop);
                     LoadData();
+                    MessageBox.Show("Xóa lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -101,7 +105,7 @@ namespace GUI
             var idNganh = comboBoxDanhsachnganh.SelectedValue?.ToString();
 
             var result = _logic.SearchLops(tenLop, idNganh)
-                .Select(l => new { l.MaLop, l.tenLop, TenNganh = _logic.GetNganhs().FirstOrDefault(n => n.Id == l.nganhId)?.tenNganh })
+                .Select(l => new { l.MaLop, l.tenLop, TenNganh = _logic.GetNganhs().FirstOrDefault(n => n.maNganh == l.nganhId)?.tenNganh })
                 .ToList();
 
             if (result.Any())
@@ -135,7 +139,7 @@ namespace GUI
                 var nganh = _logic.GetNganhs().FirstOrDefault(n => n.tenNganh == tenNganh);
                 if (nganh != null)
                 {
-                    comboBoxDanhsachnganh.SelectedValue = nganh.Id;
+                    comboBoxDanhsachnganh.SelectedValue = nganh.maNganh;
                 }
             }
         }

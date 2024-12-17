@@ -32,15 +32,21 @@ namespace DAL
             return admin != null;
         }
 
+        // ---------------------------------
         // Lớp
         // CRUD operations for Lop
         public List<Lop> GetAllLops() => Lops.Find(_ => true).ToList();
 
         public void AddLop(Lop lop) => Lops.InsertOne(lop);
 
-        public void UpdateLop(string maLop, Lop updatedLop)
+        public void UpdateLop(Lop lop)
         {
-            Lops.ReplaceOne(l => l.MaLop == maLop, updatedLop);
+            var update = Builders<Lop>.Update
+                .Set(l => l.tenLop, lop.tenLop)
+                .Set(l => l.nganhId, lop.nganhId);
+
+            var filter = Builders<Lop>.Filter.Eq(m => m.MaLop, lop.MaLop);
+            Lops.UpdateOne(filter, update);
         }
 
         public void DeleteLop(string maLop)
@@ -61,7 +67,11 @@ namespace DAL
 
         // Fetch departments for ComboBox
         public List<Nganh> GetAllNganhs() => Nganhs.Find(_ => true).ToList();
+        // ---------------------------------
 
+
+
+        // ---------------------------------
         // Môn học
         // Lấy tất cả môn học
         public List<MonHoc> GetMonHocs()
@@ -120,5 +130,7 @@ namespace DAL
 
             return MonHocCollection.Find(filter).ToList();
         }
+
+        // ---------------------------------
     }
 }
