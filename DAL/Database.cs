@@ -21,10 +21,24 @@ namespace DAL
 
         }
 
-        public IMongoCollection<Admin> Admins => _database.GetCollection<Admin>("Admin");
         public IMongoCollection<Lop> Lops => _database.GetCollection<Lop>("Lop");
         public IMongoCollection<Nganh> Nganhs => _database.GetCollection<Nganh>("Nganh");
+        public IMongoCollection<Khoa> Khoas => _database.GetCollection<Khoa>("Khoa");
 
+        // Lấy danh sách Lớp
+        public List<string> GetAllClassNames() {
+            return Lops.Find(_ => true).ToList().Select(l => l.TenLop).ToList();
+        }
+
+        // Lấy danh sách Ngành
+        public List<string> GetAllMajors() {
+            return Nganhs.Find(_ => true).ToList().Select(n => n.tenNganh).ToList();
+        }
+
+        // Lấy danh sách Khoa
+        public List<string> GetAllFaculties() {
+            return Khoas.Find(_ => true).ToList().Select(k => k.TenKhoa).ToList();
+        }
         // Admin authentication
         public bool AuthenticateAdmin(string username, string password)
         {
