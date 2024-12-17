@@ -28,371 +28,526 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtMakhoa = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dateTimePickerNgaysinh = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerNhaphoc = new System.Windows.Forms.DateTimePicker();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.btnLamMoi = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtMssv = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtQuequan = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtMalop = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtTensv = new System.Windows.Forms.TextBox();
-            this.comboBoxGioitinh = new System.Windows.Forms.ComboBox();
-            this.ngaynhaphoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.makhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.malop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quequan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gioitinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaysinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tensv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.masv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewDanhsachSV = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanhsachSV)).BeginInit();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.btnAdvancedSearch = new System.Windows.Forms.Button();
+            this.btnAdjust = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.dgvSinhVien = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Class = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Major = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Faculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Session = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Advisor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tlpSearch = new System.Windows.Forms.TableLayoutPanel();
+            this.txtMSSV = new System.Windows.Forms.TextBox();
+            this.txtFullName = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.cbBirthYear = new System.Windows.Forms.ComboBox();
+            this.cbSex = new System.Windows.Forms.ComboBox();
+            this.cbCLass = new System.Windows.Forms.ComboBox();
+            this.txtPhoneNum = new System.Windows.Forms.TextBox();
+            this.cbMajor = new System.Windows.Forms.ComboBox();
+            this.cbFaculty = new System.Windows.Forms.ComboBox();
+            this.cbSession = new System.Windows.Forms.ComboBox();
+            this.txtAdvisor = new System.Windows.Forms.TextBox();
+            this.lblMSSV = new System.Windows.Forms.Label();
+            this.lblFullName = new System.Windows.Forms.Label();
+            this.lblBirthYear = new System.Windows.Forms.Label();
+            this.lblSex = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblPhoneNum = new System.Windows.Forms.Label();
+            this.lblClass = new System.Windows.Forms.Label();
+            this.lblMajor = new System.Windows.Forms.Label();
+            this.lblFaculty = new System.Windows.Forms.Label();
+            this.lblSession = new System.Windows.Forms.Label();
+            this.lblAdvisor = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).BeginInit();
+            this.tlpSearch.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label3
+            // lblTitle
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(732, 41);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Ngày sinh: ";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(20, 25);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(341, 46);
+            this.lblTitle.TabIndex = 13;
+            this.lblTitle.Text = "Quản lý sinh viên";
             // 
-            // label7
+            // btnAdvancedSearch
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(731, 96);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 20);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Mã khoa: ";
+            this.btnAdvancedSearch.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdvancedSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdvancedSearch.Location = new System.Drawing.Point(766, 335);
+            this.btnAdvancedSearch.Name = "btnAdvancedSearch";
+            this.btnAdvancedSearch.Size = new System.Drawing.Size(213, 43);
+            this.btnAdvancedSearch.TabIndex = 11;
+            this.btnAdvancedSearch.Text = "Tìm kiếm nâng cao";
+            this.btnAdvancedSearch.UseVisualStyleBackColor = true;
+            this.btnAdvancedSearch.Click += new System.EventHandler(this.btnAdvancedSearch_Click);
             // 
-            // txtMakhoa
+            // btnAdjust
             // 
-            this.txtMakhoa.Location = new System.Drawing.Point(819, 96);
-            this.txtMakhoa.Name = "txtMakhoa";
-            this.txtMakhoa.Size = new System.Drawing.Size(139, 22);
-            this.txtMakhoa.TabIndex = 1;
+            this.btnAdjust.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdjust.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdjust.Location = new System.Drawing.Point(1557, 334);
+            this.btnAdjust.Name = "btnAdjust";
+            this.btnAdjust.Size = new System.Drawing.Size(147, 44);
+            this.btnAdjust.TabIndex = 10;
+            this.btnAdjust.Text = "Chỉnh sủa ";
+            this.btnAdjust.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdjust.UseVisualStyleBackColor = true;
+            this.btnAdjust.Click += new System.EventHandler(this.btnAdjust_Click);
             // 
-            // label8
+            // btnDelete
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(64, 156);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(130, 20);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Ngày nhập học: ";
+            this.btnDelete.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(1710, 333);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(93, 44);
+            this.btnDelete.TabIndex = 9;
+            this.btnDelete.Text = "Xóa ";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
-            // dateTimePickerNgaysinh
+            // btnAdd
             // 
-            this.dateTimePickerNgaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerNgaysinh.Location = new System.Drawing.Point(831, 41);
-            this.dateTimePickerNgaysinh.Name = "dateTimePickerNgaysinh";
-            this.dateTimePickerNgaysinh.Size = new System.Drawing.Size(138, 22);
-            this.dateTimePickerNgaysinh.TabIndex = 2;
+            this.btnAdd.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(80, 334);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(95, 43);
+            this.btnAdd.TabIndex = 8;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
-            // dateTimePickerNhaphoc
+            // dgvSinhVien
             // 
-            this.dateTimePickerNhaphoc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerNhaphoc.Location = new System.Drawing.Point(200, 156);
-            this.dateTimePickerNhaphoc.Name = "dateTimePickerNhaphoc";
-            this.dateTimePickerNhaphoc.Size = new System.Drawing.Size(174, 22);
-            this.dateTimePickerNhaphoc.TabIndex = 4;
+            this.dgvSinhVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSinhVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.FullName,
+            this.BirthYear,
+            this.Sex,
+            this.Email,
+            this.PhoneNum,
+            this.Class,
+            this.Major,
+            this.Faculty,
+            this.Session,
+            this.Advisor});
+            this.dgvSinhVien.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dgvSinhVien.Location = new System.Drawing.Point(80, 387);
+            this.dgvSinhVien.Name = "dgvSinhVien";
+            this.dgvSinhVien.RowHeadersWidth = 62;
+            this.dgvSinhVien.RowTemplate.Height = 28;
+            this.dgvSinhVien.Size = new System.Drawing.Size(1718, 441);
+            this.dgvSinhVien.TabIndex = 7;
             // 
-            // btnThem
+            // Id
             // 
-            this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(414, 146);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(95, 40);
-            this.btnThem.TabIndex = 5;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
+            this.Id.HeaderText = "MSSV";
+            this.Id.MinimumWidth = 8;
+            this.Id.Name = "Id";
+            this.Id.Width = 150;
             // 
-            // btnSua
+            // FullName
             // 
-            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(549, 146);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(95, 40);
-            this.btnSua.TabIndex = 5;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
+            this.FullName.HeaderText = "Họ và tên";
+            this.FullName.MinimumWidth = 8;
+            this.FullName.Name = "FullName";
+            this.FullName.Width = 150;
             // 
-            // btnXoa
+            // BirthYear
             // 
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(684, 146);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(95, 40);
-            this.btnXoa.TabIndex = 5;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
+            this.BirthYear.HeaderText = "Năm sinh";
+            this.BirthYear.MinimumWidth = 8;
+            this.BirthYear.Name = "BirthYear";
+            this.BirthYear.Width = 150;
             // 
-            // btnTimKiem
+            // Sex
             // 
-            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKiem.Location = new System.Drawing.Point(819, 146);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(115, 40);
-            this.btnTimKiem.TabIndex = 5;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.Sex.HeaderText = "Giới tính";
+            this.Sex.MinimumWidth = 8;
+            this.Sex.Name = "Sex";
+            this.Sex.Width = 150;
             // 
-            // btnLamMoi
+            // Email
             // 
-            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi.Location = new System.Drawing.Point(963, 146);
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(115, 40);
-            this.btnLamMoi.TabIndex = 5;
-            this.btnLamMoi.Text = "Làm mới";
-            this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.Email.HeaderText = "Email";
+            this.Email.MinimumWidth = 8;
+            this.Email.Name = "Email";
+            this.Email.Width = 150;
             // 
-            // label1
+            // PhoneNum
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(64, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "MSSV: ";
+            this.PhoneNum.HeaderText = "Số điện thoại";
+            this.PhoneNum.MinimumWidth = 8;
+            this.PhoneNum.Name = "PhoneNum";
+            this.PhoneNum.Width = 150;
             // 
-            // txtMssv
+            // Class
             // 
-            this.txtMssv.Location = new System.Drawing.Point(134, 38);
-            this.txtMssv.Name = "txtMssv";
-            this.txtMssv.Size = new System.Drawing.Size(211, 22);
-            this.txtMssv.TabIndex = 1;
+            this.Class.HeaderText = "Tên lớp";
+            this.Class.MinimumWidth = 8;
+            this.Class.Name = "Class";
+            this.Class.Width = 150;
             // 
-            // label4
+            // Major
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(64, 94);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 20);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Giới tính:";
+            this.Major.HeaderText = "Nghành";
+            this.Major.MinimumWidth = 8;
+            this.Major.Name = "Major";
+            this.Major.Width = 150;
             // 
-            // label5
+            // Faculty
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(243, 90);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 20);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Quê quán: ";
+            this.Faculty.HeaderText = "Khoa";
+            this.Faculty.MinimumWidth = 8;
+            this.Faculty.Name = "Faculty";
+            this.Faculty.Width = 150;
             // 
-            // txtQuequan
+            // Session
             // 
-            this.txtQuequan.Location = new System.Drawing.Point(335, 92);
-            this.txtQuequan.Name = "txtQuequan";
-            this.txtQuequan.Size = new System.Drawing.Size(126, 22);
-            this.txtQuequan.TabIndex = 1;
+            this.Session.HeaderText = "Niên khóa";
+            this.Session.MinimumWidth = 8;
+            this.Session.Name = "Session";
+            this.Session.Width = 150;
             // 
-            // label6
+            // Advisor
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(479, 92);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 20);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Mã lớp: ";
+            this.Advisor.HeaderText = "Tên cố vấn";
+            this.Advisor.MinimumWidth = 8;
+            this.Advisor.Name = "Advisor";
+            this.Advisor.Width = 150;
             // 
-            // txtMalop
+            // tlpSearch
             // 
-            this.txtMalop.Location = new System.Drawing.Point(549, 94);
-            this.txtMalop.Name = "txtMalop";
-            this.txtMalop.Size = new System.Drawing.Size(153, 22);
-            this.txtMalop.TabIndex = 1;
+            this.tlpSearch.ColumnCount = 2;
+            this.tlpSearch.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpSearch.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpSearch.Controls.Add(this.lblAdvisor, 0, 10);
+            this.tlpSearch.Controls.Add(this.lblSession, 0, 9);
+            this.tlpSearch.Controls.Add(this.lblFaculty, 0, 8);
+            this.tlpSearch.Controls.Add(this.lblMajor, 0, 7);
+            this.tlpSearch.Controls.Add(this.lblClass, 0, 6);
+            this.tlpSearch.Controls.Add(this.lblPhoneNum, 0, 5);
+            this.tlpSearch.Controls.Add(this.lblEmail, 0, 4);
+            this.tlpSearch.Controls.Add(this.lblSex, 0, 3);
+            this.tlpSearch.Controls.Add(this.lblBirthYear, 0, 2);
+            this.tlpSearch.Controls.Add(this.lblFullName, 0, 1);
+            this.tlpSearch.Controls.Add(this.lblMSSV, 0, 0);
+            this.tlpSearch.Controls.Add(this.txtMSSV, 1, 0);
+            this.tlpSearch.Controls.Add(this.txtFullName, 1, 1);
+            this.tlpSearch.Controls.Add(this.txtEmail, 1, 4);
+            this.tlpSearch.Controls.Add(this.cbBirthYear, 1, 2);
+            this.tlpSearch.Controls.Add(this.cbSex, 1, 3);
+            this.tlpSearch.Controls.Add(this.cbCLass, 1, 6);
+            this.tlpSearch.Controls.Add(this.txtPhoneNum, 1, 5);
+            this.tlpSearch.Controls.Add(this.cbMajor, 1, 7);
+            this.tlpSearch.Controls.Add(this.cbFaculty, 1, 8);
+            this.tlpSearch.Controls.Add(this.cbSession, 1, 9);
+            this.tlpSearch.Controls.Add(this.txtAdvisor, 1, 10);
+            this.tlpSearch.Location = new System.Drawing.Point(1035, 8);
+            this.tlpSearch.Name = "tlpSearch";
+            this.tlpSearch.RowCount = 11;
+            this.tlpSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSearch.Size = new System.Drawing.Size(334, 373);
+            this.tlpSearch.TabIndex = 18;
             // 
-            // label2
+            // txtMSSV
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(373, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Tên SV:";
+            this.txtMSSV.Location = new System.Drawing.Point(170, 3);
+            this.txtMSSV.Name = "txtMSSV";
+            this.txtMSSV.Size = new System.Drawing.Size(161, 26);
+            this.txtMSSV.TabIndex = 0;
             // 
-            // txtTensv
+            // txtFullName
             // 
-            this.txtTensv.Location = new System.Drawing.Point(443, 40);
-            this.txtTensv.Name = "txtTensv";
-            this.txtTensv.Size = new System.Drawing.Size(273, 22);
-            this.txtTensv.TabIndex = 1;
+            this.txtFullName.Location = new System.Drawing.Point(170, 35);
+            this.txtFullName.Name = "txtFullName";
+            this.txtFullName.Size = new System.Drawing.Size(161, 26);
+            this.txtFullName.TabIndex = 1;
             // 
-            // comboBoxGioitinh
+            // txtEmail
             // 
-            this.comboBoxGioitinh.FormattingEnabled = true;
-            this.comboBoxGioitinh.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
-            this.comboBoxGioitinh.Location = new System.Drawing.Point(148, 92);
-            this.comboBoxGioitinh.Name = "comboBoxGioitinh";
-            this.comboBoxGioitinh.Size = new System.Drawing.Size(74, 24);
-            this.comboBoxGioitinh.TabIndex = 3;
+            this.txtEmail.Location = new System.Drawing.Point(170, 135);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(161, 26);
+            this.txtEmail.TabIndex = 2;
             // 
-            // ngaynhaphoc
+            // cbBirthYear
             // 
-            this.ngaynhaphoc.HeaderText = "Ngày nhập học";
-            this.ngaynhaphoc.MinimumWidth = 6;
-            this.ngaynhaphoc.Name = "ngaynhaphoc";
-            this.ngaynhaphoc.Width = 125;
+            this.cbBirthYear.FormattingEnabled = true;
+            this.cbBirthYear.Location = new System.Drawing.Point(170, 67);
+            this.cbBirthYear.Name = "cbBirthYear";
+            this.cbBirthYear.Size = new System.Drawing.Size(121, 28);
+            this.cbBirthYear.TabIndex = 3;
             // 
-            // makhoa
+            // cbSex
             // 
-            this.makhoa.HeaderText = "Mã khoa";
-            this.makhoa.MinimumWidth = 6;
-            this.makhoa.Name = "makhoa";
-            this.makhoa.Width = 125;
+            this.cbSex.FormattingEnabled = true;
+            this.cbSex.Location = new System.Drawing.Point(170, 101);
+            this.cbSex.Name = "cbSex";
+            this.cbSex.Size = new System.Drawing.Size(121, 28);
+            this.cbSex.TabIndex = 4;
             // 
-            // malop
+            // cbCLass
             // 
-            this.malop.HeaderText = "Mã lớp";
-            this.malop.MinimumWidth = 6;
-            this.malop.Name = "malop";
-            this.malop.Width = 125;
+            this.cbCLass.FormattingEnabled = true;
+            this.cbCLass.Location = new System.Drawing.Point(170, 199);
+            this.cbCLass.Name = "cbCLass";
+            this.cbCLass.Size = new System.Drawing.Size(121, 28);
+            this.cbCLass.TabIndex = 5;
             // 
-            // quequan
+            // txtPhoneNum
             // 
-            this.quequan.HeaderText = "Quê quán";
-            this.quequan.MinimumWidth = 6;
-            this.quequan.Name = "quequan";
-            this.quequan.Width = 125;
+            this.txtPhoneNum.Location = new System.Drawing.Point(170, 167);
+            this.txtPhoneNum.Name = "txtPhoneNum";
+            this.txtPhoneNum.Size = new System.Drawing.Size(161, 26);
+            this.txtPhoneNum.TabIndex = 6;
             // 
-            // gioitinh
+            // cbMajor
             // 
-            this.gioitinh.HeaderText = "Giới tính";
-            this.gioitinh.MinimumWidth = 6;
-            this.gioitinh.Name = "gioitinh";
-            this.gioitinh.Width = 125;
+            this.cbMajor.FormattingEnabled = true;
+            this.cbMajor.Location = new System.Drawing.Point(170, 233);
+            this.cbMajor.Name = "cbMajor";
+            this.cbMajor.Size = new System.Drawing.Size(121, 28);
+            this.cbMajor.TabIndex = 7;
             // 
-            // ngaysinh
+            // cbFaculty
             // 
-            this.ngaysinh.HeaderText = "Ngày sinh";
-            this.ngaysinh.MinimumWidth = 6;
-            this.ngaysinh.Name = "ngaysinh";
-            this.ngaysinh.Width = 125;
+            this.cbFaculty.FormattingEnabled = true;
+            this.cbFaculty.Location = new System.Drawing.Point(170, 267);
+            this.cbFaculty.Name = "cbFaculty";
+            this.cbFaculty.Size = new System.Drawing.Size(121, 28);
+            this.cbFaculty.TabIndex = 8;
             // 
-            // tensv
+            // cbSession
             // 
-            this.tensv.HeaderText = "Tên sinh viên";
-            this.tensv.MinimumWidth = 6;
-            this.tensv.Name = "tensv";
-            this.tensv.Width = 125;
+            this.cbSession.FormattingEnabled = true;
+            this.cbSession.Location = new System.Drawing.Point(170, 301);
+            this.cbSession.Name = "cbSession";
+            this.cbSession.Size = new System.Drawing.Size(121, 28);
+            this.cbSession.TabIndex = 9;
             // 
-            // masv
+            // txtAdvisor
             // 
-            this.masv.HeaderText = "MSSV";
-            this.masv.MinimumWidth = 6;
-            this.masv.Name = "masv";
-            this.masv.Width = 125;
+            this.txtAdvisor.Location = new System.Drawing.Point(170, 335);
+            this.txtAdvisor.Name = "txtAdvisor";
+            this.txtAdvisor.Size = new System.Drawing.Size(161, 26);
+            this.txtAdvisor.TabIndex = 10;
             // 
-            // dataGridViewDanhsachSV
+            // lblMSSV
             // 
-            this.dataGridViewDanhsachSV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDanhsachSV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.masv,
-            this.tensv,
-            this.ngaysinh,
-            this.gioitinh,
-            this.quequan,
-            this.malop,
-            this.makhoa,
-            this.ngaynhaphoc});
-            this.dataGridViewDanhsachSV.Location = new System.Drawing.Point(28, 207);
-            this.dataGridViewDanhsachSV.Name = "dataGridViewDanhsachSV";
-            this.dataGridViewDanhsachSV.RowHeadersWidth = 51;
-            this.dataGridViewDanhsachSV.RowTemplate.Height = 24;
-            this.dataGridViewDanhsachSV.Size = new System.Drawing.Size(1050, 280);
-            this.dataGridViewDanhsachSV.TabIndex = 6;
+            this.lblMSSV.AutoSize = true;
+            this.lblMSSV.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMSSV.Location = new System.Drawing.Point(3, 0);
+            this.lblMSSV.Name = "lblMSSV";
+            this.lblMSSV.Size = new System.Drawing.Size(72, 24);
+            this.lblMSSV.TabIndex = 36;
+            this.lblMSSV.Text = "MSSV:";
+            // 
+            // lblFullName
+            // 
+            this.lblFullName.AutoSize = true;
+            this.lblFullName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.Location = new System.Drawing.Point(3, 32);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(107, 24);
+            this.lblFullName.TabIndex = 37;
+            this.lblFullName.Text = "Họ và tên:";
+            // 
+            // lblBirthYear
+            // 
+            this.lblBirthYear.AutoSize = true;
+            this.lblBirthYear.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBirthYear.Location = new System.Drawing.Point(3, 64);
+            this.lblBirthYear.Name = "lblBirthYear";
+            this.lblBirthYear.Size = new System.Drawing.Size(105, 24);
+            this.lblBirthYear.TabIndex = 38;
+            this.lblBirthYear.Text = "Năm sinh:";
+            // 
+            // lblSex
+            // 
+            this.lblSex.AutoSize = true;
+            this.lblSex.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSex.Location = new System.Drawing.Point(3, 98);
+            this.lblSex.Name = "lblSex";
+            this.lblSex.Size = new System.Drawing.Size(100, 24);
+            this.lblSex.TabIndex = 39;
+            this.lblSex.Text = "Giới tính:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(3, 132);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(68, 24);
+            this.lblEmail.TabIndex = 40;
+            this.lblEmail.Text = "Email:";
+            // 
+            // lblPhoneNum
+            // 
+            this.lblPhoneNum.AutoSize = true;
+            this.lblPhoneNum.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhoneNum.Location = new System.Drawing.Point(3, 164);
+            this.lblPhoneNum.Name = "lblPhoneNum";
+            this.lblPhoneNum.Size = new System.Drawing.Size(141, 24);
+            this.lblPhoneNum.TabIndex = 41;
+            this.lblPhoneNum.Text = "Số điện thoại:";
+            // 
+            // lblClass
+            // 
+            this.lblClass.AutoSize = true;
+            this.lblClass.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClass.Location = new System.Drawing.Point(3, 196);
+            this.lblClass.Name = "lblClass";
+            this.lblClass.Size = new System.Drawing.Size(90, 24);
+            this.lblClass.TabIndex = 42;
+            this.lblClass.Text = "Tên lớp:";
+            // 
+            // lblMajor
+            // 
+            this.lblMajor.AutoSize = true;
+            this.lblMajor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMajor.Location = new System.Drawing.Point(3, 230);
+            this.lblMajor.Name = "lblMajor";
+            this.lblMajor.Size = new System.Drawing.Size(90, 24);
+            this.lblMajor.TabIndex = 43;
+            this.lblMajor.Text = "Nghành:";
+            // 
+            // lblFaculty
+            // 
+            this.lblFaculty.AutoSize = true;
+            this.lblFaculty.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFaculty.Location = new System.Drawing.Point(3, 264);
+            this.lblFaculty.Name = "lblFaculty";
+            this.lblFaculty.Size = new System.Drawing.Size(66, 24);
+            this.lblFaculty.TabIndex = 44;
+            this.lblFaculty.Text = "Khoa:";
+            // 
+            // lblSession
+            // 
+            this.lblSession.AutoSize = true;
+            this.lblSession.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSession.Location = new System.Drawing.Point(3, 298);
+            this.lblSession.Name = "lblSession";
+            this.lblSession.Size = new System.Drawing.Size(111, 24);
+            this.lblSession.TabIndex = 45;
+            this.lblSession.Text = "Niên khóa:";
+            // 
+            // lblAdvisor
+            // 
+            this.lblAdvisor.AutoSize = true;
+            this.lblAdvisor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdvisor.Location = new System.Drawing.Point(3, 332);
+            this.lblAdvisor.Name = "lblAdvisor";
+            this.lblAdvisor.Size = new System.Drawing.Size(122, 24);
+            this.lblAdvisor.TabIndex = 46;
+            this.lblAdvisor.Text = "Tên cố vấn:";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(1413, 25);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(125, 49);
+            this.btnSearch.TabIndex = 19;
+            this.btnSearch.Text = "Tìm kiếm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // frmSinhVien
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 521);
-            this.Controls.Add(this.dataGridViewDanhsachSV);
-            this.Controls.Add(this.btnLamMoi);
-            this.Controls.Add(this.btnTimKiem);
-            this.Controls.Add(this.btnXoa);
-            this.Controls.Add(this.btnSua);
-            this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.dateTimePickerNhaphoc);
-            this.Controls.Add(this.comboBoxGioitinh);
-            this.Controls.Add(this.dateTimePickerNgaysinh);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtTensv);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtMakhoa);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtMalop);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtQuequan);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtMssv);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1853, 829);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.tlpSearch);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.btnAdvancedSearch);
+            this.Controls.Add(this.btnAdjust);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.dgvSinhVien);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmSinhVien";
             this.Text = "Quản lý sinh viên";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanhsachSV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).EndInit();
+            this.tlpSearch.ResumeLayout(false);
+            this.tlpSearch.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtMakhoa;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimePickerNgaysinh;
-        private System.Windows.Forms.DateTimePicker dateTimePickerNhaphoc;
-        private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.Button btnXoa;
-        private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.Button btnLamMoi;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtMssv;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtQuequan;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtMalop;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtTensv;
-        private System.Windows.Forms.ComboBox comboBoxGioitinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngaynhaphoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn makhoa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn malop;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quequan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gioitinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngaysinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tensv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn masv;
-        private System.Windows.Forms.DataGridView dataGridViewDanhsachSV;
+
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnAdvancedSearch;
+        private System.Windows.Forms.Button btnAdjust;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.DataGridView dgvSinhVien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirthYear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Class;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Major;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Faculty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Session;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Advisor;
+        private System.Windows.Forms.TableLayoutPanel tlpSearch;
+        private System.Windows.Forms.TextBox txtMSSV;
+        private System.Windows.Forms.TextBox txtFullName;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.ComboBox cbBirthYear;
+        private System.Windows.Forms.ComboBox cbSex;
+        private System.Windows.Forms.ComboBox cbCLass;
+        private System.Windows.Forms.TextBox txtPhoneNum;
+        private System.Windows.Forms.ComboBox cbMajor;
+        private System.Windows.Forms.ComboBox cbFaculty;
+        private System.Windows.Forms.ComboBox cbSession;
+        private System.Windows.Forms.TextBox txtAdvisor;
+        private System.Windows.Forms.Label lblMSSV;
+        private System.Windows.Forms.Label lblFullName;
+        private System.Windows.Forms.Label lblBirthYear;
+        private System.Windows.Forms.Label lblSex;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblPhoneNum;
+        private System.Windows.Forms.Label lblClass;
+        private System.Windows.Forms.Label lblMajor;
+        private System.Windows.Forms.Label lblFaculty;
+        private System.Windows.Forms.Label lblSession;
+        private System.Windows.Forms.Label lblAdvisor;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

@@ -16,7 +16,9 @@ namespace DAL
         public Database()
         {
             var client = new MongoClient("mongodb+srv://tienle:pass123@cluster0.y6jck.mongodb.net/");
+
             _database = client.GetDatabase("QL_Thongtinsinhvien");
+
         }
 
         public IMongoCollection<Admin> Admins => _database.GetCollection<Admin>("Admin");
@@ -71,7 +73,46 @@ namespace DAL
 
 
 
-        // ---------------------------------
+      
+        // CRUD for SinhVien
+        public IMongoCollection<SinhVien> SinhViens => _database.GetCollection<SinhVien>("SinhVien");
+
+        // Thêm sinh viên
+        public void AddSinhVien(SinhVien sinhVien) {
+            SinhViens.InsertOne(sinhVien);
+        }
+
+        // Cập nhật thông tin sinh viên
+        public void UpdateSinhVien(string mssv, SinhVien updatedSinhVien) {
+            var filter = Builders<SinhVien>.Filter.Eq(sv => sv.MSSV, mssv);
+
+            var update = Builders<SinhVien>.Update
+                .Set(sv => sv.FullName, updatedSinhVien.FullName)
+                .Set(sv => sv.BirthYear, updatedSinhVien.BirthYear)
+                .Set(sv => sv.Sex, updatedSinhVien.Sex)
+                .Set(sv => sv.Email, updatedSinhVien.Email)
+                .Set(sv => sv.PhoneNum, updatedSinhVien.PhoneNum)
+                .Set(sv => sv.Class, updatedSinhVien.Class)
+                .Set(sv => sv.Major, updatedSinhVien.Major)
+                .Set(sv => sv.Faculty, updatedSinhVien.Faculty)
+                .Set(sv => sv.Session, updatedSinhVien.Session)
+                .Set(sv => sv.Advisor, updatedSinhVien.Advisor);
+
+            SinhViens.UpdateOne(filter, update);
+        }
+
+
+        // Xóa sinh viên
+        public void DeleteSinhVien(string mssv) {
+            SinhViens.DeleteOne(sv => sv.MSSV == mssv);
+        }
+
+        // Lấy tất cả sinh viên
+        public List<SinhVien> GetAllSinhViens() {
+            return SinhViens.Find(_ => true).ToList();
+        }
+
+
         // Môn học
         // Lấy tất cả môn học
         public List<MonHoc> GetMonHocs()
