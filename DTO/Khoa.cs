@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class Lop
+    public class Khoa
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string MaLop { get; set; } // ID
-        public string tenLop { get; set; } // ten lop
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string nganhId { get; set; } // tham chieu toi ID cua Nganh
+        public string Id { get; set; }
+        public string maKhoa { get; set; }
+        public string tenKhoa { get; set; }
     }
 }
