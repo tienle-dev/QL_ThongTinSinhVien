@@ -22,6 +22,7 @@ namespace BLL
             return _db.AuthenticateAdmin(username, password);
         }
 
+
         public List<Lop> GetLops() => _db.GetAllLops();
         public List<Nganh> GetNganhs() => _db.GetAllNganhs();
         public void AddLop(Lop lop) => _db.AddLop(lop);
