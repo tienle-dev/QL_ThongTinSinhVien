@@ -278,6 +278,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmTrangChu";
             this.Text = "Phần mềm quản lý thông tin sinh viên";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmTrangChu_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
