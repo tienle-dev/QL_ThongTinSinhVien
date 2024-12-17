@@ -61,5 +61,13 @@ namespace GUI
         {
             Application.Exit();
         }
+
+        private void btnStudent_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmSinhVien sinhvien = new frmSinhVien();
+            sinhvien.ShowDialog();
+            this.Show();
+        }
     }
 }
