@@ -26,6 +26,7 @@ namespace DAL
         public IMongoCollection<Nganh> Nganhs => _database.GetCollection<Nganh>("Nganh");
         public IMongoCollection<MonHoc> MonHocCollection => _database.GetCollection<MonHoc>("MonHoc");
         public IMongoCollection<Khoa> KhoaCollection => _database.GetCollection<Khoa>("Khoa");
+        public IMongoCollection<GiangVien> GiangVienCollection => _database.GetCollection<GiangVien>("GiangVien");
 
         // Admin authentication
         public bool AuthenticateAdmin(string username, string password)
@@ -120,12 +121,7 @@ namespace DAL
             return MonHocCollection.Find(new BsonDocument()).ToList();
         }
 
-        // Lấy tất cả khoa
-        public List<Khoa> GetKhoas()
-        {
-            return KhoaCollection.Find(new BsonDocument()).ToList();
-        }
-
+        
         // Thêm môn học
         public void AddMonHoc(MonHoc monHoc)
         {
@@ -173,5 +169,133 @@ namespace DAL
         }
 
         // ---------------------------------
+
+        // Khoa
+
+        // Lấy thông tin Khoa theo khoaId
+        public Khoa GetKhoaById(string khoaId)
+        {
+            return KhoaCollection.Find(k => k.maKhoa == khoaId).FirstOrDefault();
+        }
+        // Lấy danh sách các khoa
+        public List<Khoa> GetKhoas()
+        {
+            return KhoaCollection.Find(new BsonDocument()).ToList();
+        }
+
+        // Thêm khoa mới
+        public void AddKhoa(Khoa khoa)
+        {
+            KhoaCollection.InsertOne(khoa);
+        }
+
+        // Cập nhật khoa
+        public void UpdateKhoa(Khoa khoa)
+        {
+            var filter = Builders<Khoa>.Filter.Eq(k => k.maKhoa, khoa.maKhoa);
+            var update = Builders<Khoa>.Update
+                .Set(k => k.tenKhoa, khoa.tenKhoa);
+            KhoaCollection.UpdateOne(filter, update);
+        }
+
+        // Xóa khoa
+        public void DeleteKhoa(string maKhoa)
+        {
+            var filter = Builders<Khoa>.Filter.Eq(k => k.maKhoa, maKhoa);
+            KhoaCollection.DeleteOne(filter);
+        }
+        public List<Khoa> SearchKhoas(string searchTerm)
+        {
+            var filter = Builders<Khoa>.Filter.Or(
+                Builders<Khoa>.Filter.Regex(k => k.maKhoa, new BsonRegularExpression(searchTerm, "i")),  // Tìm kiếm theo mã khoa (không phân biệt chữ hoa, chữ thường)
+                Builders<Khoa>.Filter.Regex(k => k.tenKhoa, new BsonRegularExpression(searchTerm, "i"))   // Tìm kiếm theo tên khoa (không phân biệt chữ hoa, chữ thường)
+            );
+
+            return KhoaCollection.Find(filter).ToList();
+        }
+
+        // ---------------------------------
+        //Ngành
+        // Thêm ngành mới
+        public void AddNganh(Nganh nganh)
+        {
+            Nganhs.InsertOne(nganh);
+        }
+
+        // Cập nhật ngành
+        public void UpdateNganh(Nganh nganh)
+        {
+            var filter = Builders<Nganh>.Filter.Eq(n => n.maNganh, nganh.maNganh);
+            var update = Builders<Nganh>.Update
+                .Set(n => n.tenNganh, nganh.tenNganh)
+                .Set(n => n.maKhoa, nganh.maKhoa);
+            Nganhs.UpdateOne(filter, update);
+        }
+
+        // Xóa ngành
+        public void DeleteNganh(string maNganh)
+        {
+            var filter = Builders<Nganh>.Filter.Eq(n => n.maNganh, maNganh);
+            Nganhs.DeleteOne(filter);
+        }
+
+        // Tìm kiếm ngành
+        public List<Nganh> SearchNganhs(string searchTerm)
+        {
+            var filter = Builders<Nganh>.Filter.Or(
+                Builders<Nganh>.Filter.Regex(n => n.maNganh, new BsonRegularExpression(searchTerm, "i")),
+                Builders<Nganh>.Filter.Regex(n => n.tenNganh, new BsonRegularExpression(searchTerm, "i"))
+            );
+            return Nganhs.Find(filter).ToList();
+        }
+
+        //----------------------------------
+        //Giảng viên
+
+        // Lấy tất cả giảng viên
+        public List<GiangVien> GetGiangViens()
+        {
+            return GiangVienCollection.Find(new BsonDocument()).ToList();
+        }
+
+        // Thêm giảng viên
+        public void AddGiangVien(GiangVien giangVien)
+        {
+            GiangVienCollection.InsertOne(giangVien);
+        }
+
+        // Cập nhật giảng viên
+        public void UpdateGiangVien(GiangVien giangVien)
+        {
+            var filter = Builders<GiangVien>.Filter.Eq(g => g.maGV, giangVien.maGV);
+            var update = Builders<GiangVien>.Update
+                .Set(g => g.hoTen, giangVien.hoTen)
+                .Set(g => g.gioiTinh, giangVien.gioiTinh)
+                .Set(g => g.maLop, giangVien.maLop)
+                .Set(g => g.ngaySinh, giangVien.ngaySinh)
+                .Set(g => g.email, giangVien.email)
+                .Set(g => g.soDT, giangVien.soDT);
+
+            GiangVienCollection.UpdateOne(filter, update);
+        }
+
+        // Xóa giảng viên
+        public void DeleteGiangVien(string maGV)
+        {
+            var filter = Builders<GiangVien>.Filter.Eq(g => g.maGV, maGV);
+            GiangVienCollection.DeleteOne(filter);
+        }
+
+        // Tìm kiếm giảng viên
+        public List<GiangVien> SearchGiangViens(string searchTerm)
+        {
+            var filter = Builders<GiangVien>.Filter.Or(
+                Builders<GiangVien>.Filter.Regex(g => g.maGV, new BsonRegularExpression(searchTerm, "i")),
+                Builders<GiangVien>.Filter.Regex(g => g.hoTen, new BsonRegularExpression(searchTerm, "i"))
+            );
+
+            return GiangVienCollection.Find(filter).ToList();
+        }
+        //----------------------------------
     }
 }

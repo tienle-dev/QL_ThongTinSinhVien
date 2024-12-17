@@ -61,5 +61,33 @@ namespace GUI
         {
             Application.Exit();
         }
+
+        private void btnScore_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GiangVienToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmGiangvien giangvien = new frmGiangvien();
+            giangvien.ShowDialog();
+            this.Show();
+        }
+
+        private void btnTeacher_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSignOut_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStudent_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

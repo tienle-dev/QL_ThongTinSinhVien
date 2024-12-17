@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="Giangvien.cs" />
     <Compile Include="Khoa.cs" />
     <Compile Include="Lop.cs" />
     <Compile Include="MonHoc.cs" />

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.dataGridViewDanhsachnganh = new System.Windows.Forms.DataGridView();
+            this.manganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tennganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenkhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -40,9 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxDanhsachkhoa = new System.Windows.Forms.ComboBox();
-            this.manganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tennganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenkhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanhsachnganh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,6 +59,29 @@
             this.dataGridViewDanhsachnganh.RowTemplate.Height = 24;
             this.dataGridViewDanhsachnganh.Size = new System.Drawing.Size(780, 159);
             this.dataGridViewDanhsachnganh.TabIndex = 34;
+            this.dataGridViewDanhsachnganh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanhsachnganh_CellContentClick);
+            this.dataGridViewDanhsachnganh.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanhsachnganh_CellClick);
+            // 
+            // manganh
+            // 
+            this.manganh.HeaderText = "Mã ngành";
+            this.manganh.MinimumWidth = 6;
+            this.manganh.Name = "manganh";
+            this.manganh.Width = 125;
+            // 
+            // tennganh
+            // 
+            this.tennganh.HeaderText = "Tên ngành";
+            this.tennganh.MinimumWidth = 6;
+            this.tennganh.Name = "tennganh";
+            this.tennganh.Width = 300;
+            // 
+            // tenkhoa
+            // 
+            this.tenkhoa.HeaderText = "Tên khoa";
+            this.tenkhoa.MinimumWidth = 6;
+            this.tenkhoa.Name = "tenkhoa";
+            this.tenkhoa.Width = 300;
             // 
             // btnLamMoi
             // 
@@ -69,6 +92,7 @@
             this.btnLamMoi.TabIndex = 29;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // btnTimKiem
             // 
@@ -79,6 +103,7 @@
             this.btnTimKiem.TabIndex = 30;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // btnXoa
             // 
@@ -89,6 +114,7 @@
             this.btnXoa.TabIndex = 31;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -99,6 +125,7 @@
             this.btnSua.TabIndex = 32;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -109,6 +136,7 @@
             this.btnThem.TabIndex = 33;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtTennganh
             // 
@@ -116,6 +144,7 @@
             this.txtTennganh.Name = "txtTennganh";
             this.txtTennganh.Size = new System.Drawing.Size(306, 22);
             this.txtTennganh.TabIndex = 27;
+            this.txtTennganh.TextChanged += new System.EventHandler(this.txtTennganh_TextChanged);
             // 
             // label2
             // 
@@ -133,6 +162,7 @@
             this.txtManganh.Name = "txtManganh";
             this.txtManganh.Size = new System.Drawing.Size(164, 22);
             this.txtManganh.TabIndex = 28;
+            this.txtManganh.TextChanged += new System.EventHandler(this.txtManganh_TextChanged);
             // 
             // label1
             // 
@@ -161,27 +191,7 @@
             this.comboBoxDanhsachkhoa.Name = "comboBoxDanhsachkhoa";
             this.comboBoxDanhsachkhoa.Size = new System.Drawing.Size(291, 24);
             this.comboBoxDanhsachkhoa.TabIndex = 35;
-            // 
-            // manganh
-            // 
-            this.manganh.HeaderText = "Mã ngành";
-            this.manganh.MinimumWidth = 6;
-            this.manganh.Name = "manganh";
-            this.manganh.Width = 125;
-            // 
-            // tennganh
-            // 
-            this.tennganh.HeaderText = "Tên ngành";
-            this.tennganh.MinimumWidth = 6;
-            this.tennganh.Name = "tennganh";
-            this.tennganh.Width = 300;
-            // 
-            // tenkhoa
-            // 
-            this.tenkhoa.HeaderText = "Tên khoa";
-            this.tenkhoa.MinimumWidth = 6;
-            this.tenkhoa.Name = "tenkhoa";
-            this.tenkhoa.Width = 300;
+            this.comboBoxDanhsachkhoa.SelectedIndexChanged += new System.EventHandler(this.comboBoxDanhsachkhoa_SelectedIndexChanged);
             // 
             // frmNganh
             // 
@@ -202,6 +212,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmNganh";
             this.Text = "frmNganh";
+            this.Load += new System.EventHandler(this.frmNganh_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanhsachnganh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
