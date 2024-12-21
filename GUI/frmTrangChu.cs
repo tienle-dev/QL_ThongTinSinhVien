@@ -96,7 +96,10 @@ namespace GUI
 
         private void btnScore_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmDiem diem = new frmDiem();
+            diem.ShowDialog();
+            this.Show();
         }
 
         private void GiangVienToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,13 +112,26 @@ namespace GUI
 
         private void btnTeacher_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmGiangvien giangvien = new frmGiangvien();
+            giangvien.ShowDialog();
+            this.Show();
         }
 
-        private void btnSignOut_Click(object sender, EventArgs e)
+        private void btnClass_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmLop lop = new frmLop();
+            lop.ShowDialog();
+            this.Show();
         }
 
+        private void btnSubject_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmMonHoc monHoc = new frmMonHoc();
+            monHoc.ShowDialog();
+            this.Show();
+        }
     }
 }

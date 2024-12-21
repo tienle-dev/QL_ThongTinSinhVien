@@ -37,9 +37,6 @@
             this.NganhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GiangVienToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblUserValue = new System.Windows.Forms.Label();
-            this.lblNameValue = new System.Windows.Forms.Label();
-            this.lblUserId = new System.Windows.Forms.Label();
             this.btnSignOut = new System.Windows.Forms.Button();
             this.lblHome = new System.Windows.Forms.Label();
             this.btnFaculty1 = new System.Windows.Forms.Button();
@@ -74,83 +71,57 @@
             this.LopToolStripMenuItem,
             this.GiangVienToolStripMenuItem});
             this.quanLyToolStripMenuItem.Name = "quanLyToolStripMenuItem";
-            this.quanLyToolStripMenuItem.Size = new System.Drawing.Size(89, 29);
+            this.quanLyToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.quanLyToolStripMenuItem.Text = "Quản lý";
             // 
             // SinhVienToolStripMenuItem
             // 
             this.SinhVienToolStripMenuItem.Name = "SinhVienToolStripMenuItem";
-            this.SinhVienToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.SinhVienToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.SinhVienToolStripMenuItem.Text = "Quản lý sinh viên";
             this.SinhVienToolStripMenuItem.Click += new System.EventHandler(this.SinhVienToolStripMenuItem_Click);
             // 
             // MonHocToolStripMenuItem
             // 
             this.MonHocToolStripMenuItem.Name = "MonHocToolStripMenuItem";
-            this.MonHocToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.MonHocToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.MonHocToolStripMenuItem.Text = "Quản lý môn học";
             this.MonHocToolStripMenuItem.Click += new System.EventHandler(this.MonHocToolStripMenuItem_Click);
             // 
             // DiemToolStripMenuItem
             // 
             this.DiemToolStripMenuItem.Name = "DiemToolStripMenuItem";
-            this.DiemToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.DiemToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.DiemToolStripMenuItem.Text = "Quản lý điểm";
             this.DiemToolStripMenuItem.Click += new System.EventHandler(this.DiemToolStripMenuItem_Click);
             // 
             // KhoaToolStripMenuItem
             // 
             this.KhoaToolStripMenuItem.Name = "KhoaToolStripMenuItem";
-            this.KhoaToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.KhoaToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.KhoaToolStripMenuItem.Text = "Quản lý khoa";
             this.KhoaToolStripMenuItem.Click += new System.EventHandler(this.KhoaToolStripMenuItem_Click);
             // 
             // NganhToolStripMenuItem
             // 
             this.NganhToolStripMenuItem.Name = "NganhToolStripMenuItem";
-            this.NganhToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.NganhToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.NganhToolStripMenuItem.Text = "Quản lý ngành";
             this.NganhToolStripMenuItem.Click += new System.EventHandler(this.NganhToolStripMenuItem_Click);
             // 
             // LopToolStripMenuItem
             // 
             this.LopToolStripMenuItem.Name = "LopToolStripMenuItem";
-            this.LopToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.LopToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.LopToolStripMenuItem.Text = "Quản lý lớp";
             this.LopToolStripMenuItem.Click += new System.EventHandler(this.LopToolStripMenuItem_Click);
             // 
             // GiangVienToolStripMenuItem
             // 
             this.GiangVienToolStripMenuItem.Name = "GiangVienToolStripMenuItem";
-            this.GiangVienToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.GiangVienToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.GiangVienToolStripMenuItem.Text = "Quản lý giảng viên";
             this.GiangVienToolStripMenuItem.Click += new System.EventHandler(this.GiangVienToolStripMenuItem_Click);
-            // 
-            // lblUserValue
-            // 
-            this.lblUserValue.AutoSize = true;
-            this.lblUserValue.Location = new System.Drawing.Point(491, 320);
-            this.lblUserValue.Name = "lblUserValue";
-            this.lblUserValue.Size = new System.Drawing.Size(16, 16);
-            this.lblUserValue.TabIndex = 28;
-            this.lblUserValue.Text = "...";
-            // 
-            // lblNameValue
-            // 
-            this.lblNameValue.AutoSize = true;
-            this.lblNameValue.Location = new System.Drawing.Point(491, 356);
-            this.lblNameValue.Name = "lblNameValue";
-            this.lblNameValue.Size = new System.Drawing.Size(16, 16);
-            this.lblNameValue.TabIndex = 27;
-            this.lblNameValue.Text = "...";
-            // 
-            // lblUserId
-            // 
-            this.lblUserId.AutoSize = true;
-            this.lblUserId.Location = new System.Drawing.Point(491, 320);
-            this.lblUserId.Name = "lblUserId";
-            this.lblUserId.Size = new System.Drawing.Size(0, 16);
-            this.lblUserId.TabIndex = 26;
             // 
             // btnSignOut
             // 
@@ -208,6 +179,7 @@
             this.btnSubject.TabIndex = 18;
             this.btnSubject.Text = "Môn Học";
             this.btnSubject.UseVisualStyleBackColor = true;
+            this.btnSubject.Click += new System.EventHandler(this.btnSubject_Click);
             // 
             // btnClass
             // 
@@ -219,6 +191,7 @@
             this.btnClass.TabIndex = 17;
             this.btnClass.Text = "Lớp Học";
             this.btnClass.UseVisualStyleBackColor = true;
+            this.btnClass.Click += new System.EventHandler(this.btnClass_Click);
             // 
             // btnTeacher
             // 
