@@ -22,6 +22,6 @@ namespace BLL
         public void AddLop(Lop lop) => _db.AddLop(lop);
         public void UpdateLop(Lop updatedLop) => _db.UpdateLop(updatedLop);
         public void DeleteLop(string maLop) => _db.DeleteLop(maLop);
-        public List<Lop> SearchLops(string tenLop, string idNganh) => _db.SearchLops(tenLop, idNganh);
+        public List<Lop> SearchLops(string maLop, string tenLop, string idNganh) => _db.SearchLops(maLop, tenLop, idNganh);
     }
 }

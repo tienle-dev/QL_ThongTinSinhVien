@@ -57,9 +57,11 @@ namespace DAL
             Lops.DeleteOne(l => l.MaLop == maLop);
         }
 
-        public List<Lop> SearchLops(string tenLop, string idNganh)
+        public List<Lop> SearchLops(string maLop, string tenLop, string idNganh)
         {
             var filter = Builders<Lop>.Filter.Empty;
+            if (!string.IsNullOrEmpty(maLop))
+                filter &= Builders<Lop>.Filter.Eq(l => l.MaLop, maLop);
             if (!string.IsNullOrEmpty(tenLop))
                 filter &= Builders<Lop>.Filter.Eq(l => l.tenLop, tenLop);
             if (!string.IsNullOrEmpty(idNganh))
@@ -113,7 +115,7 @@ namespace DAL
             return SinhViens.Find(_ => true).ToList();
         }
 
-
+        // ---------------------------------
         // Môn học
         // Lấy tất cả môn học
         public List<MonHoc> GetMonHocs()
@@ -136,7 +138,8 @@ namespace DAL
                 .Set(m => m.soTinChi, monHoc.soTinChi)
                 .Set(m => m.tietLT, monHoc.tietLT)
                 .Set(m => m.tietTH, monHoc.tietTH)
-                .Set(m => m.khoaId, monHoc.khoaId);
+                .Set(m => m.khoaId, monHoc.khoaId)
+                .Set(m => m.HocKy, monHoc.HocKy);
 
             var filter = Builders<MonHoc>.Filter.Eq(m => m.MaMon, monHoc.MaMon);
             MonHocCollection.UpdateOne(filter, update);
@@ -150,10 +153,12 @@ namespace DAL
         }
 
         // Tìm kiếm môn học
-        public List<MonHoc> SearchMonHocs(string tenMon, int? soTinChi, int? tietLyThuyet, int? tietThucHanh, string maKhoa)
+        public List<MonHoc> SearchMonHocs(string maMon,string tenMon, int? soTinChi, int? tietLyThuyet, int? tietThucHanh, string maKhoa, string hocKy)
         {
             var filter = Builders<MonHoc>.Filter.Empty;
 
+            if (!string.IsNullOrEmpty(maMon))
+                filter &= Builders<MonHoc>.Filter.Regex(m => m.MaMon, new BsonRegularExpression(maMon, "i"));
             if (!string.IsNullOrEmpty(tenMon))
                 filter &= Builders<MonHoc>.Filter.Regex(m => m.tenMon, new BsonRegularExpression(tenMon, "i"));
             if (soTinChi.HasValue)
@@ -164,6 +169,8 @@ namespace DAL
                 filter &= Builders<MonHoc>.Filter.Eq(m => m.tietTH, tietThucHanh.Value);
             if (!string.IsNullOrEmpty(maKhoa))
                 filter &= Builders<MonHoc>.Filter.Eq(m => m.khoaId, maKhoa);
+            if (!string.IsNullOrEmpty(hocKy))
+                filter &= Builders<MonHoc>.Filter.Eq(m => m.HocKy, hocKy);
 
             return MonHocCollection.Find(filter).ToList();
         }

@@ -16,5 +16,6 @@ namespace DTO
         public string Id { get; set; } // Department ID
         public string tenAd { get; set; } // Username
         public string matKhau { get; set; } // Password
+        public string hoVaTenAd { get; set; } // họ tên admin
     }
 }

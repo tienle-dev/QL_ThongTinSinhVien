@@ -35,6 +35,7 @@ namespace GUI
                     mh.soTinChi,
                     mh.tietLT,
                     mh.tietTH,
+                    mh.HocKy,
                     Khoa = _logic.GetKhoas().FirstOrDefault(k => k.maKhoa == mh.khoaId)?.tenKhoa
                 }).ToList();
 
@@ -47,11 +48,14 @@ namespace GUI
             dataGridViewDanhsachmon.Columns["tietlythuyet"].DataPropertyName = "tietLT";
             dataGridViewDanhsachmon.Columns["tietthuchanh"].DataPropertyName = "tietTH";
             dataGridViewDanhsachmon.Columns["khoa"].DataPropertyName = "Khoa";
+            dataGridViewDanhsachmon.Columns["hocky"].DataPropertyName = "HocKy";
 
             comboBoxKhoaquanly.DataSource = _logic.GetKhoas();
             comboBoxKhoaquanly.DisplayMember = "tenKhoa";
             comboBoxKhoaquanly.ValueMember = "maKhoa";
             comboBoxKhoaquanly.SelectedIndex = -1;
+
+            comboBoxHocKy.SelectedIndex = -1;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -65,7 +69,8 @@ namespace GUI
                     soTinChi = int.Parse(comboBoxTinchi.Text),
                     tietLT = int.Parse(txtTietlythuyet.Text.Trim()),
                     tietTH = int.Parse(txtTietthuchanh.Text.Trim()),
-                    khoaId = comboBoxKhoaquanly.SelectedValue.ToString()
+                    khoaId = comboBoxKhoaquanly.SelectedValue.ToString(),
+                    HocKy = comboBoxHocKy.Text.Trim()
                 };
 
                 try
@@ -99,6 +104,8 @@ namespace GUI
                 {
                     comboBoxKhoaquanly.SelectedValue = khoa.maKhoa;
                 }
+
+                comboBoxHocKy.Text = selectedRow.Cells["hocky"].Value.ToString();
             }
         }
 
@@ -113,7 +120,8 @@ namespace GUI
                     soTinChi = int.Parse(comboBoxTinchi.Text),
                     tietLT = int.Parse(txtTietlythuyet.Text.Trim()),
                     tietTH = int.Parse(txtTietthuchanh.Text.Trim()),
-                    khoaId = comboBoxKhoaquanly.SelectedValue.ToString()
+                    khoaId = comboBoxKhoaquanly.SelectedValue.ToString(),
+                    HocKy = comboBoxHocKy.Text.Trim()
                 };
 
                 try
@@ -157,13 +165,15 @@ namespace GUI
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
+            var maMon = txtMamon.Text.Trim();
             var tenMon = txtTenmon.Text.Trim();
             var soTinChi = string.IsNullOrWhiteSpace(comboBoxTinchi.Text) ? (int?)null : int.Parse(comboBoxTinchi.Text);
             var tietLyThuyet = string.IsNullOrWhiteSpace(txtTietlythuyet.Text) ? (int?)null : int.Parse(txtTietlythuyet.Text);
             var tietThucHanh = string.IsNullOrWhiteSpace(txtTietthuchanh.Text) ? (int?)null : int.Parse(txtTietthuchanh.Text);
             var maKhoa = comboBoxKhoaquanly.SelectedValue?.ToString();
+            var hocKy = comboBoxHocKy.SelectedValue?.ToString();
 
-            var result = _logic.SearchMonHocs(tenMon, soTinChi, tietLyThuyet, tietThucHanh, maKhoa)
+            var result = _logic.SearchMonHocs(maMon, tenMon, soTinChi, tietLyThuyet, tietThucHanh, maKhoa, hocKy)
                 .Select(mh => new
                 {
                     mh.MaMon,
@@ -171,6 +181,7 @@ namespace GUI
                     mh.soTinChi,
                     mh.tietLT,
                     mh.tietTH,
+                    mh.HocKy,
                     Khoa = _logic.GetKhoas().FirstOrDefault(k => k.maKhoa == mh.khoaId)?.tenKhoa
                 }).ToList();
 
@@ -192,6 +203,7 @@ namespace GUI
             txtTietlythuyet.Clear();
             txtTietthuchanh.Clear();
             comboBoxKhoaquanly.SelectedIndex = -1;
+            comboBoxHocKy.SelectedIndex = -1;
             LoadData();
         }
 
@@ -214,6 +226,11 @@ namespace GUI
         }
 
         private void frmMonHoc_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }

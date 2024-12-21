@@ -43,9 +43,9 @@ namespace BLL
             _db.DeleteMonHoc(maMon);
         }
 
-        public List<MonHoc> SearchMonHocs(string tenMon, int? soTinChi, int? tietLyThuyet, int? tietThucHanh, string maKhoa)
+        public List<MonHoc> SearchMonHocs(string maMon,string tenMon, int? soTinChi, int? tietLyThuyet, int? tietThucHanh, string maKhoa, string hocKy)
         {
-            return _db.SearchMonHocs(tenMon, soTinChi, tietLyThuyet, tietThucHanh, maKhoa);
+            return _db.SearchMonHocs(maMon,tenMon, soTinChi, tietLyThuyet, tietThucHanh, maKhoa, hocKy);
         }
     }
 }
