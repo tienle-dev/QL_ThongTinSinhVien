@@ -12,9 +12,7 @@ namespace DTO
         public string hoTen { get; set; }
         public string gioiTinh { get; set; }
 
-        [BsonRepresentation(BsonType.ObjectId)]
         public string maLop { get; set; }
-
         public string ngaySinh { get; set; }
         public string email { get; set; }
         public string soDT { get; set; }

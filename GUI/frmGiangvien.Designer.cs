@@ -179,6 +179,7 @@
             // 
             // dataGridViewBangGV
             // 
+            this.dataGridViewBangGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewBangGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBangGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.magiangvien,
@@ -188,11 +189,11 @@
             this.ngaysinh,
             this.email,
             this.sodienthoai});
-            this.dataGridViewBangGV.Location = new System.Drawing.Point(48, 234);
+            this.dataGridViewBangGV.Location = new System.Drawing.Point(23, 234);
             this.dataGridViewBangGV.Name = "dataGridViewBangGV";
             this.dataGridViewBangGV.RowHeadersWidth = 51;
             this.dataGridViewBangGV.RowTemplate.Height = 24;
-            this.dataGridViewBangGV.Size = new System.Drawing.Size(926, 289);
+            this.dataGridViewBangGV.Size = new System.Drawing.Size(977, 289);
             this.dataGridViewBangGV.TabIndex = 11;
             this.dataGridViewBangGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBangGV_CellClick);
             this.dataGridViewBangGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBangGV_CellContentClick);
@@ -202,49 +203,42 @@
             this.magiangvien.HeaderText = "Mã giảng viên";
             this.magiangvien.MinimumWidth = 6;
             this.magiangvien.Name = "magiangvien";
-            this.magiangvien.Width = 125;
             // 
             // tengiangvien
             // 
             this.tengiangvien.HeaderText = "Tên giảng viên";
             this.tengiangvien.MinimumWidth = 6;
             this.tengiangvien.Name = "tengiangvien";
-            this.tengiangvien.Width = 125;
             // 
             // gioitinh
             // 
             this.gioitinh.HeaderText = "Giới tính";
             this.gioitinh.MinimumWidth = 6;
             this.gioitinh.Name = "gioitinh";
-            this.gioitinh.Width = 125;
             // 
             // malop
             // 
             this.malop.HeaderText = "Mã lớp cố vấn";
             this.malop.MinimumWidth = 6;
             this.malop.Name = "malop";
-            this.malop.Width = 125;
             // 
             // ngaysinh
             // 
             this.ngaysinh.HeaderText = "Ngày sinh";
             this.ngaysinh.MinimumWidth = 6;
             this.ngaysinh.Name = "ngaysinh";
-            this.ngaysinh.Width = 125;
             // 
             // email
             // 
             this.email.HeaderText = "Email";
             this.email.MinimumWidth = 6;
             this.email.Name = "email";
-            this.email.Width = 125;
             // 
             // sodienthoai
             // 
             this.sodienthoai.HeaderText = "Số điện thoại";
             this.sodienthoai.MinimumWidth = 6;
             this.sodienthoai.Name = "sodienthoai";
-            this.sodienthoai.Width = 125;
             // 
             // groupBoxGioiTinh
             // 
@@ -361,9 +355,10 @@
             this.label7.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label7.Location = new System.Drawing.Point(324, 12);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(317, 39);
+            this.label7.Size = new System.Drawing.Size(305, 38);
             this.label7.TabIndex = 21;
             this.label7.Text = "Quản lý giảng viên";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // frmGiangvien
             // 

@@ -46,6 +46,11 @@ namespace GUI
             dataGridViewBangGV.Columns["ngaysinh"].DataPropertyName = "ngaySinh";
             dataGridViewBangGV.Columns["email"].DataPropertyName = "email";
             dataGridViewBangGV.Columns["sodienthoai"].DataPropertyName = "soDT";
+
+            comboBoxMaLop.DataSource = _logic.GetLops();
+            comboBoxMaLop.DisplayMember = "MaLop";
+            comboBoxMaLop.ValueMember = "MaLop";
+            comboBoxMaLop.SelectedIndex = -1;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -72,10 +77,10 @@ namespace GUI
         {
             if (dataGridViewBangGV.SelectedRows.Count > 0)
             {
-                var maGV = dataGridViewBangGV.SelectedRows[0].Cells["maGV"].Value.ToString();
+                var magiangvien = dataGridViewBangGV.SelectedRows[0].Cells["magiangvien"].Value.ToString();
                 if (MessageBox.Show("Bạn có chắc muốn xóa giảng viên này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    _logic.DeleteGiangVien(maGV);
+                    _logic.DeleteGiangVien(magiangvien);
                     LoadData();
                 }
             }
@@ -182,7 +187,16 @@ namespace GUI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            // Lấy từ khóa tìm kiếm và loại bỏ khoảng trắng thừa
             var searchTerm = textBoxTenGV.Text.Trim();
+
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                MessageBox.Show("Vui lòng nhập thông tin để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Nếu không có từ khóa tìm kiếm, dừng lại
+            }
+
+            // Tìm kiếm giảng viên theo từ khóa
             var result = _logic.SearchGiangViens(searchTerm)
                 .Select(g => new
                 {
@@ -193,7 +207,16 @@ namespace GUI
                     g.ngaySinh,
                     g.email,
                     g.soDT
-                }).ToList();
+                })
+                .ToList();
+
+            // Kiểm tra xem có kết quả tìm kiếm hay không
+            if (result.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy giảng viên nào khớp với từ khóa tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            // Gán kết quả vào DataGridView
             dataGridViewBangGV.DataSource = result;
         }
         private void LoadMaLopToComboBox()
@@ -208,12 +231,11 @@ namespace GUI
         private void dataGridViewBangGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra tránh lỗi khi click vào tiêu đề cột hoặc ngoài vùng dữ liệu
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            if (e.RowIndex >= 0) // Chỉ kiểm tra hàng, bỏ qua kiểm tra cột
             {
                 // Lấy hàng được chọn
                 DataGridViewRow selectedRow = dataGridViewBangGV.Rows[e.RowIndex];
 
-                // Kiểm tra và lấy dữ liệu từ các cột với tên đúng từ DataGridView
                 // Hiển thị thông tin lên các điều khiển
 
                 // Mã giảng viên
@@ -228,7 +250,15 @@ namespace GUI
                 // Ngày sinh
                 if (selectedRow.Cells["ngaysinh"]?.Value != null)
                 {
-                    dateTimePickerNgaySinh.Value = Convert.ToDateTime(selectedRow.Cells["ngaysinh"].Value);
+                    object cellValue = selectedRow.Cells["ngaysinh"].Value;
+                    if (DateTime.TryParse(cellValue.ToString(), out DateTime result))
+                    {
+                        dateTimePickerNgaySinh.Value = result;
+                    }
+                    else
+                    {
+                        dateTimePickerNgaySinh.Value = DateTime.Now;
+                    }
                 }
 
                 // Xử lý giới tính (Nam/Nữ)
@@ -248,8 +278,13 @@ namespace GUI
                 // Số điện thoại
                 textBoxSoDT.Text = selectedRow.Cells["sodienthoai"]?.Value?.ToString();
             }
+
         }
 
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

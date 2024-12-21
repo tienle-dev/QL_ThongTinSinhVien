@@ -21,5 +21,7 @@ namespace BLL
         public void DeleteGiangVien(string maGV) => _db.DeleteGiangVien(maGV);
 
         public List<GiangVien> SearchGiangViens(string searchTerm) => _db.SearchGiangViens(searchTerm);
+
+        public List<Lop> GetLops() => _db.GetAllLops();
     }
 }

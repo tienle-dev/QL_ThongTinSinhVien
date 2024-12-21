@@ -158,5 +158,10 @@ namespace GUI
         {
 
         }
+
+        private void btnQuaylai_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

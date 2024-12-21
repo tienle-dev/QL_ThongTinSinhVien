@@ -1,5 +1,6 @@
 ﻿using DAL;
 using DTO;
+using System;
 using System.Collections.Generic;
 
 namespace BLL
@@ -36,33 +37,33 @@ namespace BLL
         {
             _db.DeleteNganh(maNganh);
         }
-
         // Tìm kiếm ngành theo mã ngành, tên ngành hoặc khoaId
         public List<Nganh> SearchNganhs(string manganh, string tennganh, string khoaId)
         {
-            // Tạo danh sách để chứa các kết quả tìm kiếm
+            // Lấy toàn bộ danh sách ngành từ cơ sở dữ liệu
             var results = _db.GetAllNganhs();
 
-            // Nếu mã ngành có giá trị, lọc kết quả theo mã ngành
-            if (!string.IsNullOrEmpty(manganh))
+            // Nếu mã ngành có giá trị, lọc kết quả theo mã ngành (không phân biệt chữ hoa/thường)
+            if (!string.IsNullOrWhiteSpace(manganh))
             {
-                results = results.FindAll(n => n.maNganh.Contains(manganh));
+                results = results.FindAll(n => n.maNganh.IndexOf(manganh, StringComparison.OrdinalIgnoreCase) >= 0);
             }
 
-            // Nếu tên ngành có giá trị, lọc kết quả theo tên ngành
-            if (!string.IsNullOrEmpty(tennganh))
+            // Nếu tên ngành có giá trị, lọc kết quả theo tên ngành (không phân biệt chữ hoa/thường)
+            if (!string.IsNullOrWhiteSpace(tennganh))
             {
-                results = results.FindAll(n => n.tenNganh.Contains(tennganh));
+                results = results.FindAll(n => n.tenNganh.IndexOf(tennganh, StringComparison.OrdinalIgnoreCase) >= 0);
             }
 
             // Nếu khoaId có giá trị, lọc kết quả theo khoaId
-            if (!string.IsNullOrEmpty(khoaId))
+            if (!string.IsNullOrWhiteSpace(khoaId))
             {
-                results = results.FindAll(n => n.maKhoa == khoaId);
+                results = results.FindAll(n => string.Equals(n.maKhoa, khoaId, StringComparison.OrdinalIgnoreCase));
             }
 
             return results;
         }
+
 
         // Lấy thông tin Khoa bằng khoaId
         public Khoa GetKhoaById(string khoaId)

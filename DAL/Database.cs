@@ -248,7 +248,6 @@ namespace DAL
             );
             return Nganhs.Find(filter).ToList();
         }
-
         //----------------------------------
         //Giảng viên
 

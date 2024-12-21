@@ -20,6 +20,7 @@ namespace GUI
             InitializeComponent();
             _logic = new NganhBLL();
             LoadData();
+            LoadComboBoxKhoas();
         }
         // Load dữ liệu vào DataGridView
         private void LoadData()
@@ -31,16 +32,21 @@ namespace GUI
                              {
                                  n.maNganh,
                                  n.tenNganh,
-                                 Khoa = _logic.GetKhoaById(n.maKhoa)?.tenKhoa ?? "Chưa có khoa" // Hiển thị tên khoa nếu có, nếu không thì hiển thị "Chưa có khoa"
+                                 Khoa = n.maKhoa // Hiển thị trực tiếp tên khoa
                              })
                              .ToList();
 
             dataGridViewDanhsachnganh.DataSource = data;
 
-            // Đảm bảo cột sử dụng đúng tên
+            // Gán cột
             dataGridViewDanhsachnganh.Columns["manganh"].DataPropertyName = "maNganh";
             dataGridViewDanhsachnganh.Columns["tennganh"].DataPropertyName = "tenNganh";
-            dataGridViewDanhsachnganh.Columns["tenkhoa"].DataPropertyName = "Khoa"; // Gán tên khoa vào cột
+            dataGridViewDanhsachnganh.Columns["tenkhoa"].DataPropertyName = "Khoa";
+
+            comboBoxDanhsachkhoa.DataSource = _logic.GetKhoas();
+            comboBoxDanhsachkhoa.DisplayMember = "tenKhoa";
+            comboBoxDanhsachkhoa.ValueMember = "maKhoa";
+            comboBoxDanhsachkhoa.SelectedIndex = -1;
         }
 
         private void frmNganh_Load(object sender, EventArgs e)
@@ -52,11 +58,8 @@ namespace GUI
             comboBoxDanhsachkhoa.DataSource = khoas;
             comboBoxDanhsachkhoa.DisplayMember = "tenKhoa";  // Hiển thị tên khoa trong ComboBox
             comboBoxDanhsachkhoa.ValueMember = "Id";         // Giá trị của ComboBox là Id khoa
+            LoadComboBoxKhoas();
 
-            // Đảm bảo ComboBox có giá trị hợp lệ
-            if (comboBoxDanhsachkhoa.Items.Count > 0)
-                comboBoxDanhsachkhoa.SelectedIndex = 0;  // Chọn khoa đầu tiên nếu có dữ liệu
-                                                         // Bạn không cần gọi LoadComboBoxKhoas() ở đây nữa vì đã thực hiện rồi
         }
 
         private void txtManganh_TextChanged(object sender, EventArgs e)
@@ -76,56 +79,70 @@ namespace GUI
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            // Kiểm tra xem người dùng đã chọn một khoa trong ComboBox chưa
-            if (comboBoxDanhsachkhoa.SelectedValue != null)
+            // Lấy tên khoa từ ComboBox
+            var selectedKhoa = comboBoxDanhsachkhoa.Text.Trim(); // Lấy tên khoa trực tiếp từ DisplayMember
+            if (string.IsNullOrEmpty(selectedKhoa))
             {
-                var newNganh = new Nganh
-                {
-                    maNganh = txtManganh.Text.Trim(),
-                    tenNganh = txtTennganh.Text.Trim(),
-                    maKhoa = comboBoxDanhsachkhoa.SelectedValue.ToString() // Truy xuất giá trị khoaId từ ComboBox
-                };
-
-                // Thêm ngành mới
-                _logic.AddNganh(newNganh);
-
-                // Load lại dữ liệu
-                LoadData();
+                MessageBox.Show("Vui lòng chọn một khoa trước khi thêm ngành!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            // Tạo đối tượng ngành mới
+            var newNganh = new Nganh
             {
-                MessageBox.Show("Vui lòng chọn khoa trước khi thêm ngành!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+                maNganh = txtManganh.Text.Trim(),
+                tenNganh = txtTennganh.Text.Trim(),
+                maKhoa = selectedKhoa // Gán tên khoa từ ComboBox
+            };
+
+            // Thêm ngành vào database thông qua BLL
+            _logic.AddNganh(newNganh);
+
+            // Tải lại dữ liệu để hiển thị ngành mới
+            LoadData();
+
+            // Thông báo thêm thành công
+            MessageBox.Show("Thêm ngành thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (dataGridViewDanhsachnganh.SelectedRows.Count > 0)
             {
+                // Lấy mã ngành của dòng được chọn
                 var maNganh = dataGridViewDanhsachnganh.SelectedRows[0].Cells["maNganh"].Value.ToString();
-                string khoaId = null;
 
-                // Kiểm tra nếu ComboBox có giá trị được chọn
-                if (comboBoxDanhsachkhoa.SelectedValue != null)
+                // Lấy thông tin tên ngành từ TextBox
+                var tenNganh = txtTennganh.Text.Trim();
+
+                // Lấy tên khoa từ ComboBox
+                var selectedKhoa = comboBoxDanhsachkhoa.Text.Trim(); // Lấy tên khoa từ DisplayMember
+                if (string.IsNullOrEmpty(selectedKhoa))
                 {
-                    khoaId = comboBoxDanhsachkhoa.SelectedValue.ToString();  // Lấy khoaId từ ComboBox
-                }
-                else
-                {
-                    // Nếu không có giá trị khoaId được chọn, bạn có thể hiển thị thông báo lỗi hoặc xử lý khác
-                    MessageBox.Show("Vui lòng chọn một khoa trước khi lưu thay đổi!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;  // Dừng thực thi nếu không có khoaId hợp lệ
+                    MessageBox.Show("Vui lòng chọn một khoa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
 
+                // Cập nhật ngành
                 var updatedNganh = new Nganh
                 {
                     maNganh = maNganh,
-                    tenNganh = txtTennganh.Text.Trim(),
-                    maKhoa = khoaId // Gán khoaId vào đối tượng
+                    tenNganh = tenNganh,
+                    maKhoa = selectedKhoa // Gán tên khoa
                 };
 
-                _logic.UpdateNganh(updatedNganh);  // Cập nhật ngành
-                LoadData();  // Nạp lại dữ liệu vào DataGridView
+                // Gọi BLL để cập nhật ngành
+                _logic.UpdateNganh(updatedNganh);
+
+                // Tải lại dữ liệu sau khi sửa
+                LoadData();
+
+                // Thông báo sửa thành công
+                MessageBox.Show("Sửa ngành thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để sửa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -149,39 +166,32 @@ namespace GUI
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            // Lấy giá trị tìm kiếm từ các trường nhập liệu (mã ngành, tên ngành, tên khoa)
             var searchManganh = txtManganh.Text.Trim();
             var searchTennganh = txtTennganh.Text.Trim();
-            var searchKhoa = comboBoxDanhsachkhoa.SelectedValue?.ToString();
 
-            // Nếu có ít nhất một trường tìm kiếm có giá trị
-            if (!string.IsNullOrWhiteSpace(searchManganh) || !string.IsNullOrWhiteSpace(searchTennganh) || !string.IsNullOrWhiteSpace(searchKhoa))
+            // Lấy giá trị khoa từ ComboBox
+            var searchKhoa = comboBoxDanhsachkhoa.SelectedValue != null
+                             ? comboBoxDanhsachkhoa.Text.Trim()
+                             : null;
+
+            var result = _logic.SearchNganhs(searchManganh, searchTennganh, searchKhoa)
+                               .Select(n => new
+                               {
+                                   n.maNganh,
+                                   n.tenNganh,
+                                   Khoa = n.maKhoa // Hiển thị tên khoa
+                               })
+                               .ToList();
+
+            if (result.Any())
             {
-                // Thực hiện tìm kiếm trong BLL
-                var result = _logic.SearchNganhs(searchManganh, searchTennganh, searchKhoa)
-                    .Select(n => new
-                    {
-                        n.maNganh,
-                        n.tenNganh,
-                        Khoa = _logic.GetKhoaById(n.maKhoa)?.tenKhoa ?? "Chưa có khoa"
-                    })
-                    .ToList();
-
-                // Kiểm tra nếu có kết quả
-                if (result.Any())
-                {
-                    dataGridViewDanhsachnganh.DataSource = result;
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy kết quả phù hợp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData(); // Nếu không có kết quả, hiển thị lại tất cả dữ liệu
-                }
+                dataGridViewDanhsachnganh.DataSource = result;
+                comboBoxDanhsachkhoa.SelectedIndex = -1; // Không chọn gì khi tìm thấy kết quả
             }
             else
             {
-                // Nếu không có giá trị tìm kiếm, nạp lại dữ liệu đầy đủ
-                LoadData();
+                MessageBox.Show("Không tìm thấy kết quả phù hợp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData(); // Tải lại toàn bộ dữ liệu nếu không có kết quả
             }
         }
 
@@ -195,36 +205,48 @@ namespace GUI
         private void LoadComboBoxKhoas()
         {
             var khoas = _logic.GetKhoas(); // Lấy danh sách khoa từ BLL
+
+            // Thêm một mục "Chọn khoa" vào đầu danh sách ComboBox
+            var defaultKhoa = new Khoa { maKhoa = "", tenKhoa = "Chọn khoa" }; // Khoa trống
+            khoas.Insert(0, defaultKhoa); // Thêm vào đầu danh sách
+
             comboBoxDanhsachkhoa.DataSource = khoas;
             comboBoxDanhsachkhoa.DisplayMember = "tenKhoa";  // Cột hiển thị tên khoa
-            comboBoxDanhsachkhoa.ValueMember = "Id";         // Cột giá trị là Id của khoa
+            comboBoxDanhsachkhoa.ValueMember = "maKhoa";     // Cột giá trị là maKhoa
+
+            // Đảm bảo ComboBox không chọn khoa đầu tiên (Chọn khoa)
+            comboBoxDanhsachkhoa.SelectedIndex = 0; // Chọn mục "Chọn khoa"
         }
         private void dataGridViewDanhsachnganh_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra xem người dùng có click vào dòng hợp lệ không
-            if (e.RowIndex >= 0)  // Kiểm tra nếu RowIndex không âm (dòng hợp lệ)
+            if (e.RowIndex >= 0)
             {
-                // Lấy dòng được chọn
                 var selectedRow = dataGridViewDanhsachnganh.Rows[e.RowIndex];
 
-                // Kiểm tra giá trị của các ô trước khi gán vào các textbox và comboBox
+                // Hiển thị mã ngành
                 if (selectedRow.Cells["maNganh"].Value != null)
                     txtManganh.Text = selectedRow.Cells["maNganh"].Value.ToString();
 
+                // Hiển thị tên ngành
                 if (selectedRow.Cells["tenNganh"].Value != null)
                     txtTennganh.Text = selectedRow.Cells["tenNganh"].Value.ToString();
 
-                // Sửa tên cột từ "Khoa" thành "tenkhoa"
-                if (selectedRow.Cells["tenkhoa"].Value != null)
+                // Hiển thị tên khoa trong ComboBox
+                if (selectedRow.Cells["tenKhoa"].Value != null)
                 {
-                    var khoaId = selectedRow.Cells["tenkhoa"].Value.ToString();  // Lấy giá trị khoa từ cột "tenkhoa"
-                    comboBoxDanhsachkhoa.SelectedValue = khoaId;  // Chọn khoa theo khoaId
+                    var khoaName = selectedRow.Cells["tenKhoa"].Value.ToString();
+                    comboBoxDanhsachkhoa.SelectedIndex = comboBoxDanhsachkhoa.FindStringExact(khoaName);
                 }
             }
         }
         private void dataGridViewDanhsachnganh_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnQuaylai_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
