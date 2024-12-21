@@ -66,6 +66,7 @@
             this.txtMakhoa.Name = "txtMakhoa";
             this.txtMakhoa.Size = new System.Drawing.Size(164, 22);
             this.txtMakhoa.TabIndex = 16;
+            this.txtMakhoa.TextChanged += new System.EventHandler(this.txtMakhoa_TextChanged);
             // 
             // label1
             // 
@@ -86,6 +87,7 @@
             this.btnLamMoi.TabIndex = 19;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // btnTimKiem
             // 
@@ -96,6 +98,7 @@
             this.btnTimKiem.TabIndex = 20;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // btnXoa
             // 
@@ -106,6 +109,7 @@
             this.btnXoa.TabIndex = 21;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -116,6 +120,7 @@
             this.btnSua.TabIndex = 22;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -126,6 +131,7 @@
             this.btnThem.TabIndex = 23;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // dataGridViewDanhsachkhoa
             // 
@@ -139,6 +145,8 @@
             this.dataGridViewDanhsachkhoa.RowTemplate.Height = 24;
             this.dataGridViewDanhsachkhoa.Size = new System.Drawing.Size(579, 159);
             this.dataGridViewDanhsachkhoa.TabIndex = 24;
+            this.dataGridViewDanhsachkhoa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanhsachkhoa_CellContentClick);
+            this.dataGridViewDanhsachkhoa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanhsachkhoa_CellClick);
             // 
             // makhoa
             // 
@@ -171,6 +179,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmKhoa";
             this.Text = "Quản lý khoa";
+            this.Load += new System.EventHandler(this.frmKhoa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanhsachkhoa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

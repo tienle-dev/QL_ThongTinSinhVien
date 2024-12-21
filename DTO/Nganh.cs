@@ -13,7 +13,7 @@ namespace DTO
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; } // Department ID
-        public string maNganh {  get; set; }
+        public string maNganh { get; set; }
         public string tenNganh { get; set; } // Department Name
         public string maKhoa { get; set; } // Department Name
 
