@@ -19,5 +19,6 @@ namespace DTO
         public int tietLT { get; set; }
         public int tietTH { get; set; }
         public string khoaId { get; set; }
+        public string HocKy { get; set; }
     }
 }

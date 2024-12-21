@@ -101,10 +101,11 @@ namespace GUI
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
+            var maLop = txtMalop.Text.Trim();
             var tenLop = txtTenlop.Text.Trim();
             var idNganh = comboBoxDanhsachnganh.SelectedValue?.ToString();
 
-            var result = _logic.SearchLops(tenLop, idNganh)
+            var result = _logic.SearchLops(maLop, tenLop, idNganh)
                 .Select(l => new { l.MaLop, l.tenLop, TenNganh = _logic.GetNganhs().FirstOrDefault(n => n.maNganh == l.nganhId)?.tenNganh })
                 .ToList();
 
@@ -145,6 +146,11 @@ namespace GUI
         }
 
         private void frmLop_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
